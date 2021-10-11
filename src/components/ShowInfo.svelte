@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { getShowData } from '../service/showService';
-
+    import ShowEpisodesList from './ShowEpisodesList.svelte';
     export let id;
     let name = '';
     let summary = '';
@@ -49,6 +49,8 @@
             {/if}
         </div>
     </div>
+
+    <ShowEpisodesList id={id} />
 </main>
 
 <style>
