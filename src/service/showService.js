@@ -14,7 +14,12 @@ async function getShowEpisodesData(id) {
     return data
 }
 
+function getNumberOfSeasons(episodes) {
+    return episodes.slice(-1)[0].season
+}
+
 module.exports = {
     getShowData,
-    getShowEpisodesData
+    getShowEpisodesData,
+    getNumberOfSeasons
 }
