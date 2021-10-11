@@ -1,10 +1,11 @@
 <script>
     import { onMount } from 'svelte';
     import { getNumberOfSeasons, getShowEpisodesData } from '../service/showService';
+    import { generateArrayFromOneToInc } from '../service/arrayService';
     import ShowEpisodeCard from './ShowEpisodeCard.svelte';
 
     export let id;
-    
+
     let episodesData = [{}];
     let displayedEpisodesData = [{}];
 
@@ -16,7 +17,7 @@
         displayedEpisodesData = episodesData;
 
         let numberOfSeasons = getNumberOfSeasons(episodesData);
-        seasons = [...Array(numberOfSeasons + 1).keys()].slice(1);
+        seasons = generateArrayFromOneToInc(numberOfSeasons);
 
         if (numberOfSeasons !== undefined || numberOfSeasons !== null) {
             filterBySeason(selectedSeason)
