@@ -1,0 +1,5 @@
+const SEARCH_SUMMARY_MAX_LENGTH = 150
+
+module.exports = {
+    SEARCH_SUMMARY_MAX_LENGTH
+}
