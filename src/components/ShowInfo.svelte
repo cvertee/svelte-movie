@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import { getShowData } from '../service/showService';
 
     export let id;
     let name = '';
@@ -10,8 +11,7 @@
     let yearEnd = 0;
 
     onMount(async () => {
-        let res = await fetch(`https://api.tvmaze.com/shows/${id}`);
-        let data = await res.json();
+        let data = await getShowData(id);
 
         name = data.name;
         summary = data.summary;
