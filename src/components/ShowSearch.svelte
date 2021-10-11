@@ -13,7 +13,6 @@
 	})
 
     async function find() {
-        console.log(query)
 		showsPromise = findShows(query);
     }
 </script>

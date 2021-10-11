@@ -25,7 +25,6 @@
     });
     
     function filterBySeason() {
-        console.log('...!!!!!!!' + selectedSeason)
         displayedEpisodesData = episodesData.filter((ep) => ep.season == selectedSeason)
     }
 </script>
