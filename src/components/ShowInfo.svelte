@@ -6,6 +6,8 @@
     let summary = '';
     let posterUrl = '';
     let rating = 0;
+    let yearStart = 0;
+    let yearEnd = 0;
 
     onMount(async () => {
         let res = await fetch(`https://api.tvmaze.com/shows/${id}`);
@@ -15,6 +17,12 @@
         summary = data.summary;
         posterUrl = data.image.original;
         rating = data.rating.average;
+
+        yearStart = data.premiered?.split('-')[0]
+        yearEnd = data.ended?.split('-')[0]
+
+        if (yearEnd === null || yearEnd === undefined)
+            yearEnd = '...'
 	})
 </script>
 
@@ -25,6 +33,8 @@
         </div>
         <div>
             <div class='show-name'>{name}</div>
+
+            <div class='show-air-period'>{yearStart} - {yearEnd}</div>
 
             {#if summary !== null}
                 <div class='show-summary'>{summary}</div>
@@ -49,7 +59,11 @@
 
     .show-name {
         font-size: 3em;
-        margin: 0em 0em 0.5em 0em;
+        margin: 0em 0em 0em 0em;
+    }
+
+    .show-air-period {
+        font-size: 0.75em;
     }
 
     .show-rating {
@@ -58,6 +72,7 @@
 
     .show-summary {
         font-size: 1em;
+        margin: 1em 0em 0em 0em;
     }
 
     .show-poster {
